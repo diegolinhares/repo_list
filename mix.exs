@@ -45,7 +45,8 @@ defmodule RepoList.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:tesla, "~> 1.4"},
       {:hackney, "~> 1.17"},
-      {:bypass, "~> 2.1", only: :test}
+      {:bypass, "~> 2.1", only: :test},
+      {:mox, "~> 1.0", only: :test}
     ]
   end
 
