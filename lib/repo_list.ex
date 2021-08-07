@@ -1,9 +1,5 @@
 defmodule RepoList do
-  @moduledoc """
-  RepoList keeps the contexts that define your domain
-  and business logic.
+  alias RepoList.Users.Repos.Get, as: UserGetRepos
 
-  Contexts are also responsible for managing your data, regardless
-  if it comes from the database, an external API or others.
-  """
+  defdelegate get_user_repos(username), to: UserGetRepos, as: :call
 end
