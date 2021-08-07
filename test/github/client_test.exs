@@ -12,7 +12,7 @@ defmodule RepoList.Github.ClientTest do
       {:ok, bypass: bypass}
     end
 
-    test "when the user exists and has repos, it returns them", %{bypass: bypass} do
+    test "when the user exists and has repos, it returns his repos", %{bypass: bypass} do
       # Arrange
       username = "danilo-vieira"
 
