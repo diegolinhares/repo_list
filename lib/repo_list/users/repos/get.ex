@@ -1,5 +1,7 @@
 defmodule RepoList.Users.Repos.Get do
-  alias RepoList.Github.Client
+  def call(username), do: client().get_user_repos(username)
 
-  def call(username), do: Client.get_user_repos(username)
+  defp client do
+    Application.fetch_env!(:repo_list, __MODULE__)[:github_adapter]
+  end
 end

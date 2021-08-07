@@ -1,5 +1,7 @@
 use Mix.Config
 
+config :repo_list, RepoList.Users.Repos.Get, github_adapter: RepoList.Github.ClientMock
+
 # Configure your database
 #
 # The MIX_TEST_PARTITION environment variable can be used

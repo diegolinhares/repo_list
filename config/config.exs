@@ -7,6 +7,8 @@
 # General application configuration
 use Mix.Config
 
+config :repo_list, RepoList.Users.Repos.Get, github_adapter: RepoList.Github.Client
+
 config :repo_list,
   ecto_repos: [RepoList.Repo]
 
