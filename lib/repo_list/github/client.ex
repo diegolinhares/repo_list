@@ -4,9 +4,12 @@ defmodule RepoList.Github.Client do
   plug Tesla.Middleware.Headers, [{"user-agent", "RepoListTesla"}]
   plug Tesla.Middleware.JSON
 
+  alias RepoList.Github.Behaviour
   alias RepoList.Github.Repo
   alias RepoList.Github.Error
   alias Tesla.Env
+
+  @behaviour Behaviour
 
   @base_url "https://api.github.com/users/"
 
