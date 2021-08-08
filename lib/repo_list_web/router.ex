@@ -10,6 +10,10 @@ defmodule RepoListWeb.Router do
 
     resources "/user_repos", UserReposController, param: "username", only: [:show]
     resources "/users", UsersController, only: [:create]
+
+    scope "/users" do
+      resources "/login", Users.LoginController, only: [:create], as: :users_login
+    end
   end
 
   # Enables LiveDashboard only for development
