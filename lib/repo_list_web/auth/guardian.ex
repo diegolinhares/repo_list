@@ -16,7 +16,7 @@ defmodule RepoListWeb.Auth.Guardian do
   def authenticate(%{"id" => user_id, "password" => password}) do
     with {:ok, %User{password_hash: password_hash} = user} <- RepoList.get_user_by_id(user_id),
          true <- Pbkdf2.verify_pass(password, password_hash),
-         {:ok, token, _claims} <- encode_and_sign(user) do
+         {:ok, token, _claims} <- generate_token_for_one_minute(user) do
       {:ok, token}
     else
       false -> {:error, Error.build_unauthorized()}
@@ -25,4 +25,8 @@ defmodule RepoListWeb.Auth.Guardian do
   end
 
   def authenticate(_), do: {:error, Error.invalid_or_missing_params()}
+
+  def generate_token_for_one_minute(resource) do
+    encode_and_sign(resource, %{}, ttl: {1, :minute})
+  end
 end

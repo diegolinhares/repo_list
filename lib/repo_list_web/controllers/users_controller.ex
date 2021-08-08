@@ -8,7 +8,7 @@ defmodule RepoListWeb.UsersController do
 
   def create(conn, params) do
     with {:ok, %User{} = user} <- RepoList.create_user(params),
-         {:ok, token, _claims} <- Guardian.encode_and_sign(user) do
+         {:ok, token, _claims} <- Guardian.generate_token_for_one_minute(user) do
       conn
       |> put_status(:ok)
       |> render("create.json", user: user, token: token)
