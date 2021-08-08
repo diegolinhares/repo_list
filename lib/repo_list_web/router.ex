@@ -8,7 +8,8 @@ defmodule RepoListWeb.Router do
   scope "/api", RepoListWeb do
     pipe_through :api
 
-    resources "/user_repos", UserReposController, param: "username"
+    resources "/user_repos", UserReposController, param: "username", only: [:show]
+    resources "/users", UsersController, only: [:create]
   end
 
   # Enables LiveDashboard only for development

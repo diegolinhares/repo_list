@@ -4,7 +4,7 @@ defmodule RepoList.User do
 
   @required_fields [:password]
 
-  @derive {Jason.Encoder, only: [:id] ++ @required_fields}
+  @derive {Jason.Encoder, only: [:id]}
 
   schema "users" do
     field :password, :string, virtual: true
@@ -14,6 +14,7 @@ defmodule RepoList.User do
   def changeset(params) do
     %__MODULE__{}
     |> cast(params, @required_fields)
+    |> validate_required(@required_fields)
     |> validate_length(:password, min: 12)
   end
 end
