@@ -67,7 +67,7 @@ defmodule RepoListWeb.UserReposControllerTest do
       username = "some-user-that-does-not-exists-lol"
 
       expect(ClientMock, :get_user_repos, fn _username ->
-        {:error, %Error{message: "Not Found", status: :bad_request}}
+        {:error, %Error{result: "Not Found", status: :bad_request}}
       end)
 
       # Act

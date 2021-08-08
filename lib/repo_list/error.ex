@@ -1,11 +1,11 @@
 defmodule RepoList.Error do
-  @keys [:message, :status]
+  @keys [:result, :status]
   @enforce_keys @keys
   defstruct @keys
 
-  def build(message, status) do
+  def build(result, status) do
     %__MODULE__{
-      message: message,
+      result: result,
       status: status
     }
   end

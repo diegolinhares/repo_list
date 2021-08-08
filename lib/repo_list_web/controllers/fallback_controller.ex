@@ -7,6 +7,6 @@ defmodule RepoListWeb.FallbackController do
     conn
     |> put_status(error.status)
     |> put_view(ErrorView)
-    |> render("error.json", result: error)
+    |> render("error.json", result: error.result)
   end
 end

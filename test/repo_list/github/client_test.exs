@@ -73,7 +73,7 @@ defmodule RepoList.Github.ClientTest do
       # Act
       response = Client.get_user_repos(url, username)
 
-      expected_response = {:error, %RepoList.Error{message: "Not Found", status: :bad_request}}
+      expected_response = {:error, %RepoList.Error{result: "Not Found", status: :bad_request}}
 
       # Assert
       assert response == expected_response
