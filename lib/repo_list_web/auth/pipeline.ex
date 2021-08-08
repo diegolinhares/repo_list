@@ -4,4 +4,5 @@ defmodule RepoListWeb.Auth.Pipeline do
   plug Guardian.Plug.VerifyHeader
   plug Guardian.Plug.EnsureAuthenticated
   plug Guardian.Plug.LoadResource
+  plug RepoListWeb.Auth.RefreshToken
 end

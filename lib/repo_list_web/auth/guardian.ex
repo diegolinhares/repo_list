@@ -29,4 +29,8 @@ defmodule RepoListWeb.Auth.Guardian do
   def generate_token_for_one_minute(resource) do
     encode_and_sign(resource, %{}, ttl: {1, :minute})
   end
+
+  def refresh_token_for_one_minute(token) do
+    refresh(token, ttl: {1, :minute})
+  end
 end
