@@ -1,4 +1,4 @@
-defmodule RepoList.Auth.Guardian do
+defmodule RepoListWeb.Auth.Guardian do
   use Guardian, otp_app: :repo_list
 
   alias RepoList.User
