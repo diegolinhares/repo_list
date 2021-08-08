@@ -10,7 +10,7 @@ use Mix.Config
 config :repo_list, RepoList.Users.Repos.Get, github_adapter: RepoList.Github.Client
 
 config :repo_list,
-       RepoList.Auth.Guardian,
+       RepoListWeb.Auth.Guardian,
        issuer: "repo_list",
        secret_key: "1BlSS9ZTM6XH6Xmu2It15H3dLVYYkyKUWKDVT3/TrwLOO2cTIeBmx008D8tHBoWl"
 
