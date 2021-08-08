@@ -1,4 +1,4 @@
-defmodule RepoList.Github.Error do
+defmodule RepoList.Error do
   @keys [:message, :status]
   @enforce_keys @keys
   defstruct @keys

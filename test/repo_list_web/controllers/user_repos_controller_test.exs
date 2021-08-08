@@ -3,7 +3,8 @@ defmodule RepoListWeb.UserReposControllerTest do
 
   import Mox
 
-  alias RepoList.Github.{ClientMock, Error, Repo}
+  alias RepoList.Github.{ClientMock, Repo}
+  alias RepoList.Error
 
   describe "show/2" do
     test "when the user exists and has repos, it returns his repos", %{conn: conn} do

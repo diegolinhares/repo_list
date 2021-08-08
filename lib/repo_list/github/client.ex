@@ -4,15 +4,15 @@ defmodule RepoList.Github.Client do
   plug Tesla.Middleware.Headers, [{"user-agent", "RepoListTesla"}]
   plug Tesla.Middleware.JSON
 
-  alias RepoList.Github.Behaviour
-  alias RepoList.Github.Repo
-  alias RepoList.Github.Error
+  alias RepoList.Github.{Behaviour, Repo}
+  alias RepoList.Error
   alias Tesla.Env
 
   @behaviour Behaviour
 
   @base_url "https://api.github.com/users/"
 
+  @spec get_user_repos(any, any) :: {:error, any} | {:ok, list}
   def get_user_repos(url \\ @base_url, username) do
     "#{url}#{username}/repos"
     |> get()
