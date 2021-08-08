@@ -24,5 +24,5 @@ defmodule RepoListWeb.Auth.Guardian do
     end
   end
 
-  def authenticate(_), do: Error.invalid_or_missing_params()
+  def authenticate(_), do: {:error, Error.invalid_or_missing_params()}
 end
