@@ -6,7 +6,19 @@ defmodule RepoListWeb.UserReposControllerTest do
   alias RepoList.Github.{ClientMock, Repo}
   alias RepoList.Error
 
+  alias RepoListWeb.Auth.Guardian
+
   describe "show/2" do
+    setup %{conn: conn} do
+      {:ok, user} = RepoList.create_user(%{"password" => "123456789101112"})
+
+      {:ok, token, _claims} = Guardian.encode_and_sign(user)
+
+      conn = put_req_header(conn, "authorization", "Bearer #{token}")
+
+      {:ok, conn: conn}
+    end
+
     test "when the user exists and has repos, it returns his repos", %{conn: conn} do
       # Arrange
       username = "danilo-vieira"
