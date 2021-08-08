@@ -5,10 +5,19 @@ defmodule RepoListWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug RepoListWeb.Auth.Pipeline
+  end
+
+  scope "/api", RepoListWeb do
+    pipe_through [:api, :auth]
+
+    resources "/user_repos", UserReposController, param: "username", only: [:show]
+  end
+
   scope "/api", RepoListWeb do
     pipe_through :api
 
-    resources "/user_repos", UserReposController, param: "username", only: [:show]
     resources "/users", UsersController, only: [:create]
 
     scope "/users" do

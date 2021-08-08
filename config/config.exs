@@ -15,6 +15,11 @@ config :repo_list,
        secret_key: "1BlSS9ZTM6XH6Xmu2It15H3dLVYYkyKUWKDVT3/TrwLOO2cTIeBmx008D8tHBoWl"
 
 config :repo_list,
+       RepoListWeb.Auth.Pipeline,
+       module: RepoListWeb.Auth.Guardian,
+       error_handler: RepoListWeb.Auth.ErrorHandler
+
+config :repo_list,
   ecto_repos: [RepoList.Repo]
 
 # Configures the endpoint
